@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block title %}Predict — Plant AI{% endblock %}
+
+{% block content %}
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+    <div class="container">
+        <span class="section-tag">Detection</span>
+        <h1>Disease Recognition</h1>
+        <p>Upload a leaf image and let AI detect the disease instantly</p>
+    </div>
+</section>
+
+<!-- ===== PREDICT SECTION ===== -->
+<section class="section">
+    <div class="container">
+        <div class="predict-wrapper">
+            
+            <!-- Upload Form -->
+            <div class="predict-card">
+                <div class="predict-card-header">
+                    <div class="predict-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h2>Upload Leaf Image</h2>
+                    <p>Select a clear image of the affected plant leaf</p>
+                </div>
+                
+                <form action="/predict" method="POST" enctype="multipart/form-data" id="predictForm">
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" name="image" id="fileInput" accept="image/*" required hidden>
+                        <label for="fileInput" class="upload-label">
+                            <div class="upload-icon">
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                            <h3>Click to upload or drag & drop</h3>
+                            <p>Supports: JPG, PNG, JPEG (Max 10MB)</p>
+                            <span class="file-name" id="fileName">No file chosen</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block" id="predictBtn">
+                        <i class="fa-solid fa-microscope"></i> 
+                        <span>Predict Disease</span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Results Section -->
+            {% if prediction %}
+            <div class="result-section">
+                <div class="result-header">
+                    <div class="result-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Analysis Complete</span>
+                    </div>
+                    <h2>Detection Results</h2>
+                    <p>Our AI model has analyzed your image and found the following:</p>
+                </div>
+                
+                <div class="result-grid">
+                    <!-- Uploaded Image -->
+                    <div class="result-image-card">
+                        <div class="result-image-label">
+                            <i class="fa-solid fa-image"></i> Uploaded Image
+                        </div>
+                        <div class="result-image">
+                            <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded leaf">
+                        </div>
+                    </div>
+                    
+                    <!-- Prediction Card -->
+                    <div class="result-prediction-card">
+                        <div class="result-prediction-label">
+                            <i class="fa-solid fa-clipboard-check"></i> Prediction Result
+                        </div>
+                        
+                        <div class="prediction-display">
+                            <div class="prediction-icon">
+                                {% if 'healthy' in prediction %}
+                                    <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i>
+                                {% endif %}
+                            </div>
+                            <div class="prediction-text">
+                                <span class="prediction-label">Detected Disease:</span>
+                                <h3 class="prediction-name">{{ prediction.replace('___', ' → ').replace('_', ' ') }}</h3>
+                                {% if 'healthy' in prediction %}
+                                    <span class="prediction-status status-healthy">
+                                        <i class="fa-solid fa-shield-heart"></i> Plant is Healthy
+                                    </span>
+                                {% else %}
+                                    <span class="prediction-status status-disease">
+                                        <i class="fa-solid fa-virus"></i> Disease Detected
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="prediction-details">
+                            <div class="detail-row">
+                                <span class="detail-label"><i class="fa-solid fa-seedling"></i> Crop:</span>
+                                <span class="detail-value">{{ prediction.split('___')[0].replace('_', ' ') }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label"><i class="fa-solid fa-dna"></i> Condition:</span>
+                                <span class="detail-value">{{ prediction.split('___')[1].replace('_', ' ') if '___' in prediction else prediction.replace('_', ' ') }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label"><i class="fa-solid fa-clock"></i> Status:</span>
+                                <span class="detail-value">
+                                    {% if 'healthy' in prediction %}No Action Needed{% else %}Action Required{% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <a href="/predict" class="btn btn-outline btn-block">
+                            <i class="fa-solid fa-rotate-right"></i> Try Another Image
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- Empty State -->
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h3>Ready for Analysis</h3>
+                <p>Upload a leaf image above and click "Predict Disease" to see the results here.</p>
+            </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // File Upload Preview
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+    const uploadArea = document.getElementById('uploadArea');
+    const predictForm = document.getElementById('predictForm');
+    const predictBtn = document.getElementById('predictBtn');
+
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                fileName.textContent = file.name;
+                uploadArea.classList.add('has-file');
+                
+                // Preview image
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    uploadArea.style.backgroundImage = `url(${ev.target.result})`;
+                    uploadArea.style.backgroundSize = 'cover';
+                    uploadArea.style.backgroundPosition = 'center';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('drag-over');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('drag-over');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                fileInput.files = e.dataTransfer.files;
+                fileInput.dispatchEvent(new Event('change'));
+            }
+        });
+    }
+    
+    // Loading state on form submit
+    if (predictForm) {
+        predictForm.addEventListener('submit', function() {
+            predictBtn.classList.add('loading');
+            predictBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Analyzing...</span>';
+            predictBtn.disabled = true;
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+venv/
+env/
+__pycache__/
+*.pyc
+static/uploads/*
+!static/uploads/.gitkeep
+trained_model.keras
+.env
+*.h5
+dataset/

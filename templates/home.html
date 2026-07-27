@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+
+{% block title %}Plant AI — AI-Powered Plant Disease Recognition{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-container">
+        <div class="hero-left">
+            <div class="hero-badge">
+                <i class="fa-solid fa-bolt"></i>
+                <span>AI-Powered Disease Detection</span>
+            </div>
+            <h1 class="hero-title">
+                Protect Your Crops With<br>
+                <span class="gradient-text">AI Disease Recognition</span>
+            </h1>
+            <p class="hero-subtitle">
+                Welcome to PlantAI, an advanced deep learning system designed to identify 
+                diseases in plants instantly. By simply uploading an image of a leaf, 
+                our model analyzes visual patterns to detect over <strong>38 different disease classes</strong> 
+                across 14 crop types. Join us in revolutionizing agriculture with technology.
+            </p>
+            <div class="hero-buttons">
+                <a href="/predict" class="btn btn-primary">
+                    <i class="fa-solid fa-microscope"></i> Detect Disease
+                </a>
+                <a href="/about" class="btn btn-outline">
+                    <i class="fa-solid fa-circle-info"></i> Learn More
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>38</h3>
+                    <p>Disease Classes</p>
+                </div>
+                <div class="stat-item">
+                    <h3>87K+</h3>
+                    <p>Training Images</p>
+                </div>
+                <div class="stat-item">
+                    <h3>14</h3>
+                    <p>Crop Types</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-right">
+            <div class="hero-image-wrapper">
+                <div class="floating-card card-1">
+                    <i class="fa-solid fa-leaf"></i>
+                    <div>
+                        <h4>Leaf Analysis</h4>
+                        <p>Instant detection</p>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fa-solid fa-shield-virus"></i>
+                    <div>
+                        <h4>Disease Free</h4>
+                        <p>Healthy crops</p>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1591282432978-3cfb3a6f9c98?w=800&q=80" 
+                         alt="Plant leaf" onerror="this.src='https://images.unsplash.com/photo-1545241047-6083a3684587?w=800&q=80'">
+                </div>
+                <div class="hero-glow"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INTRO SECTION ===== -->
+<section class="section">
+    <div class="container">
+        <div class="intro-grid">
+            <div class="intro-content">
+                <span class="section-tag">About System</span>
+                <h2 class="section-title">Advanced Crop Protection<br>Through Deep Learning</h2>
+                <p class="intro-text">
+                    Plant diseases cause significant economic losses in agriculture worldwide. 
+                    Early detection and accurate diagnosis are crucial for effective pest management 
+                    and crop protection. Our system leverages Convolutional Neural Networks (CNNs) 
+                    trained on the vast PlantVillage dataset.
+                </p>
+                <p class="intro-text">
+                    The model processes images of plant leaves, extracts intricate visual features 
+                    like spots, discoloration, and mold, and compares them against known disease 
+                    signatures. This allows for millisecond-level predictions that can help farmers 
+                    take immediate corrective actions, reducing crop yield loss and minimizing 
+                    the unnecessary use of pesticides.
+                </p>
+                <a href="/predict" class="btn btn-primary">
+                    <i class="fa-solid fa-upload"></i> Try It Now
+                </a>
+            </div>
+            <div class="intro-features">
+                <div class="intro-feature-item">
+                    <div class="intro-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div>
+                        <h4>CNN Architecture</h4>
+                        <p>Built on TensorFlow & Keras for high-accuracy image classification.</p>
+                    </div>
+                </div>
+                <div class="intro-feature-item">
+                    <div class="intro-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div>
+                        <h4>Real-time Processing</h4>
+                        <p>Optimized inference pipeline delivering results in under 2 seconds.</p>
+                    </div>
+                </div>
+                <div class="intro-feature-item">
+                    <div class="intro-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div>
+                        <h4>Cross-Platform</h4>
+                        <p>Accessible from any device—mobile, tablet, or desktop—right from your browser.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Process</span>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three simple steps to detect plant diseases</p>
+        </div>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-icon">
+                    <i class="fa-solid fa-upload"></i>
+                </div>
+                <h3>Upload Leaf Image</h3>
+                <p>Capture a clear photo of the affected plant leaf and upload it to our secure server. Supported formats include JPG, PNG, and JPEG.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3>AI Analysis</h3>
+                <p>Our deep learning model processes the image, analyzing pixel data and identifying patterns associated with various pathogens.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <h3>Get Results</h3>
+                <p>Receive an instant diagnosis detailing the specific disease and the plant species, helping you take informed action.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Features</span>
+            <h2 class="section-title">Why Choose PlantAI?</h2>
+            <p class="section-subtitle">Powerful features designed for accurate and fast plant disease detection</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon icon-blue">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3>High Accuracy Detection</h3>
+                <p>Trained on 70,000+ images, our model achieves exceptional accuracy across all 38 disease classes, minimizing false positives.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon icon-green">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3>Fast AI Analysis</h3>
+                <p>Powered by optimized TensorFlow operations, the system delivers predictions in seconds, enabling real-time field usage.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon icon-orange">
+                    <i class="fa-solid fa-hand-pointer"></i>
+                </div>
+                <h3>User-Friendly Interface</h3>
+                <p>A clean, intuitive dashboard that requires no technical expertise. Anyone can diagnose plants with a single click.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon icon-purple">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <h3>Extensive Crop Coverage</h3>
+                <p>Supports major crops including Apple, Tomato, Potato, Corn, Grape, and more, covering common fungal and bacterial infections.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon icon-red">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Reliable & Secure</h3>
+                <p>Your uploaded data is processed securely. We do not store or share your images with any third-party services.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon icon-teal">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <h3>Works on All Devices</h3>
+                <p>Responsive design ensures seamless performance whether you are using a smartphone in the field or a desktop in the lab.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box">
+            <div class="cta-content">
+                <h2>Ready to Detect Plant Diseases?</h2>
+                <p>Upload a leaf image now and get instant AI-powered disease detection results.</p>
+            </div>
+            <a href="/predict" class="btn btn-primary btn-lg">
+                <i class="fa-solid fa-microscope"></i> Start Detection
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

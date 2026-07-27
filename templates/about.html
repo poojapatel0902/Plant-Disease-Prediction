@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block title %}About — Plant AI{% endblock %}
+
+{% block content %}
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="page-header">
+    <div class="container">
+        <span class="section-tag">About</span>
+        <h1>About The Dataset & Model</h1>
+        <p>Detailed information about the technology and data behind our AI system</p>
+    </div>
+</section>
+
+<!-- ===== DATASET INFO ===== -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <span class="section-tag">Overview</span>
+                <h2 class="section-title">PlantVillage Dataset</h2>
+                <p class="about-text">
+                    The Plant Disease Recognition System is trained on the renowned 
+                    <strong>PlantVillage Dataset</strong>, which is an open-access, 
+                    comprehensive dataset created by Penn State University. It is one 
+                    of the most widely used datasets for machine learning research in 
+                    plant pathology.
+                </p>
+                <p class="about-text">
+                    This dataset contains a vast collection of healthy and diseased 
+                    crop leaf images, carefully labeled across 38 different disease 
+                    categories covering 14 different crop types. The images were 
+                    captured under controlled conditions to ensure high quality and 
+                    consistency for training deep learning models.
+                </p>
+                <p class="about-text">
+                    By using this dataset, our model learns the subtle visual 
+                    differences between various diseases, such as leaf spots, blights, 
+                    rusts, and molds, enabling it to provide highly accurate diagnoses.
+                </p>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>87,000+ high-resolution labeled images</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>38 distinct disease and healthy classes</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>14 major crop types covered</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>Augmented for robustness</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1591282432978-3cfb3a6f9c98?w=800&q=80" 
+                     alt="Dataset visualization" 
+                     onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80'">
+                <div class="about-image-badge">
+                    <i class="fa-solid fa-database"></i>
+                    <div>
+                        <h3>87K+</h3>
+                        <p>Images</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DATASET STATS ===== -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Statistics</span>
+            <h2 class="section-title">Dataset Breakdown</h2>
+            <p class="section-subtitle">Detailed statistics of the training and validation data</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon icon-blue">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+                <h3>87,000+</h3>
+                <p>Total Images</p>
+                <span class="stat-desc">Healthy & diseased crop images combined</span>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon icon-green">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3>38</h3>
+                <p>Disease Classes</p>
+                <span class="stat-desc">Distinct categories of plant diseases</span>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon icon-orange">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3>70,295</h3>
+                <p>Training Images</p>
+                <span class="stat-desc">Used to train the neural network</span>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon icon-purple">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <h3>17,572</h3>
+                <p>Validation Images</p>
+                <span class="stat-desc">Used for model validation & testing</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MODEL ARCHITECTURE ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Technology</span>
+            <h2 class="section-title">Model Architecture</h2>
+            <p class="section-subtitle">Built with modern deep learning frameworks</p>
+        </div>
+        
+        <div class="model-grid">
+            <div class="model-card">
+                <div class="model-icon">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h3>CNN Architecture</h3>
+                <p>Utilizes Convolutional Neural Networks (CNNs) which are highly effective for image processing tasks. The network consists of multiple convolutional layers, max-pooling layers, and dense layers to extract complex features.</p>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-icon">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+                <h3>TensorFlow & Keras</h3>
+                <p>The model is implemented using TensorFlow 2.x and the Keras API. This ensures high performance, easy deployment, and the ability to leverage GPU acceleration for faster training and inference.</p>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-icon">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <h3>Image Preprocessing</h3>
+                <p>Input images are resized to 128x128 pixels and normalized. Data augmentation techniques like rotation, zoom, and horizontal flipping were used during training to make the model robust.</p>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3>High Accuracy</h3>
+                <p>The model underwent rigorous training for multiple epochs, achieving over 99% accuracy on the validation set, ensuring reliable predictions when deployed in real-world scenarios.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box">
+            <div class="cta-content">
+                <h2>Want to Try It Yourself?</h2>
+                <p>Upload a leaf image and see the AI in action.</p>
+            </div>
+            <a href="/predict" class="btn btn-primary btn-lg">
+                <i class="fa-solid fa-microscope"></i> Start Detection
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

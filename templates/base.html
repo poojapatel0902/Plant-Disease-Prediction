@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Plant AI{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Plant<span class="logo-accent">AI</span></span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">
+                    <i class="fa-solid fa-house"></i> Home
+                </a></li>
+                <li><a href="/about" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">
+                    <i class="fa-solid fa-circle-info"></i> About
+                </a></li>
+                <li><a href="/predict" class="nav-link {% if request.endpoint == 'predict' %}active{% endif %}">
+                    <i class="fa-solid fa-microscope"></i> Predict
+                </a></li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="nav-logo">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Plant<span class="logo-accent">AI</span></span>
+                </div>
+                <p>AI-powered plant disease recognition system helping farmers & researchers detect diseases instantly.</p>
+                
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+                    <li><a href="/about"><i class="fa-solid fa-angle-right"></i> About</a></li>
+                    <li><a href="/predict"><i class="fa-solid fa-angle-right"></i> Predict</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> 38 Disease Classes</a></li>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> High Accuracy</a></li>
+                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> Instant Results</a></li>
+                </ul>
+            </div>
+            
+            
+        </div>
+        
+        
+    </footer>
+
+    <!-- ===== JS ===== -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
