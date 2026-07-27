@@ -1,19 +1,19 @@
 # 🌿 Plant Disease Prediction System
 An AI-powered web application that detects plant diseases by analyzing uploaded leaf images. Built using Flask and TensorFlow (Deep Learning).
 
-# 📌 Features
+## 📌 Features
 Deep Learning Model: CNN model trained on 87,000+ images.
 38 Disease Classes: Detects diseases across 14 crops including Apple, Tomato, Potato, Corn, Grape, and more.
 Modern Dark UI: Professional, responsive, and user-friendly interface.
 Drag & Drop Upload: Easy image upload functionality.
 Instant Results: Provides predictions within seconds with health status (Healthy or Action Required).
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 Backend: Flask (Python)
 Frontend: HTML5, CSS3, JavaScript (Custom Dark Theme)
 Machine Learning: TensorFlow, Keras, NumPy, Pillow
 
-#🚀 Installation & Setup
+## 🚀 Installation & Setup
 Follow these steps to run this project on your local machine:
 
 1. Clone the repository:
