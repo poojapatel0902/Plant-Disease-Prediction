@@ -29,6 +29,9 @@ Download trained_model.keras and place it in the project folder.
 python main.py
 6. Open in browser:
 Open http://127.0.0.1:5000 in your web browser and upload a leaf image to test!
+<img width="1200" height="888" alt="image" src="https://github.com/user-attachments/assets/026cfd4d-9fa5-4be5-9c2b-050be48d3692" />
 
 <img width="502" height="849" alt="Screenshot 2026-07-28 004931" src="https://github.com/user-attachments/assets/547ef1b2-de6a-4d71-a4e4-7204ef80b68a" />
+
+
 
